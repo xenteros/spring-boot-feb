@@ -1,6 +1,10 @@
-package com.github.xenteros.model;
+package com.github.xenteros.product;
+
+import com.github.xenteros.order.Order;
+import com.github.xenteros.supplier.Supplier;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,8 +15,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String name;
 
+    @DecimalMin("0")
     private BigDecimal price;
 
     @OneToMany (mappedBy = "product")

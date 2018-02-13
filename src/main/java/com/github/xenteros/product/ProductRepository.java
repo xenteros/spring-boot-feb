@@ -1,6 +1,5 @@
-package com.github.xenteros.repository;
+package com.github.xenteros.product;
 
-import com.github.xenteros.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

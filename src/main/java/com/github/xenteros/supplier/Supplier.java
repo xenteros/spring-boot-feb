@@ -1,4 +1,6 @@
-package com.github.xenteros.model;
+package com.github.xenteros.supplier;
+
+import com.github.xenteros.product.Product;
 
 import javax.persistence.*;
 

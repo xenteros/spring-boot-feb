@@ -1,4 +1,6 @@
-package com.github.xenteros.model;
+package com.github.xenteros.order;
+
+import com.github.xenteros.product.Product;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
