@@ -6,21 +6,21 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static com.github.xenteros.product.ProductMapper.toProductDTO;
-
 @Service
 public class ProductServiceImpl implements ProductService{
 
     private ProductRepository productRepository;
+    private ProductMapper productMapper;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     @Override
     public List<ProductDTO> findAll() {
-        return toProductDTO(productRepository.findAll());
+        return productMapper.toProductDTO(productRepository.findAll());
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ProductServiceImpl implements ProductService{
         Product product = new Product();
         product.setPrice(productDTO.getPrice());
         product.setName(productDTO.getName());
-        return toProductDTO(productRepository.save(product));
+        return productMapper.toProductDTO(productRepository.save(product));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService{
 
         Product product = productRepository.findOne(productId);
         product.setPrice(newPrice);
-        return toProductDTO(productRepository.save(product));
+        return productMapper.toProductDTO(productRepository.save(product));
     }
 
     @Override

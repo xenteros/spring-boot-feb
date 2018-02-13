@@ -1,25 +1,15 @@
 package com.github.xenteros.product;
 
-import java.util.ArrayList;
+import org.mapstruct.Mapper;
+
 import java.util.Collection;
 import java.util.List;
 
-public class ProductMapper {
+@Mapper(componentModel = "spring")
+public interface ProductMapper {
 
-    public static ProductDTO toProductDTO(Product product) {
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(product.getId());
-        productDTO.setName(product.getName());
-        productDTO.setPrice(product.getPrice());
 
-        return productDTO;
-    }
+    ProductDTO toProductDTO(Product product);
 
-    public static List<ProductDTO> toProductDTO(Collection<Product> products) {
-        List<ProductDTO> result = new ArrayList<ProductDTO>();
-        for (Product product : products) {
-            result.add(toProductDTO(product));
-        }
-        return result;
-    }
+    List<ProductDTO> toProductDTO(Collection<Product> products);
 }
