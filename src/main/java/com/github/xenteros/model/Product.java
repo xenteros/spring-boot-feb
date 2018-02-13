@@ -15,8 +15,11 @@ public class Product {
 
     private BigDecimal price;
 
-    @OneToMany
+    @OneToMany (mappedBy = "product")
     private List<Supplier> suppliers;
+
+    @ManyToMany(mappedBy = "products")
+    private List<Order> orders;
 
     public Product() {
     }
@@ -51,5 +54,13 @@ public class Product {
 
     public void setSuppliers(List<Supplier> suppliers) {
         this.suppliers = suppliers;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
