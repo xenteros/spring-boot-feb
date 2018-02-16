@@ -44,7 +44,7 @@ public class VerificationTokenServiceImpl implements VerificationTokenService {
     }
 
 
-    @Scheduled(cron = "0 /5 * * * * ?")
+    @Scheduled(fixedRate = 60000)
     public void clearExpiredTokens() {
         Set<VerificationToken> tokens = verificationTokenRepository.findAllByUserIsEnabledFalse();
         final LocalDateTime now = LocalDateTime.now();

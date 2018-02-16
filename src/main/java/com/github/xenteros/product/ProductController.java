@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping(value = "/api/products")
@@ -40,6 +43,13 @@ public class ProductController {
     @DeleteMapping("{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
+    }
+
+    @GetMapping("/interface/all")
+    public Set<String> findAllInteface() {
+        return productService.findAllInterface().stream()
+                .flatMap(p -> Stream.of(p.getName(), p.getPrice().toString()))
+                .collect(Collectors.toSet());
     }
 
 }

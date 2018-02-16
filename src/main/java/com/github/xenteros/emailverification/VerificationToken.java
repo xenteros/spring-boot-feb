@@ -5,7 +5,6 @@ import com.github.xenteros.security.User;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
@@ -13,7 +12,7 @@ import java.time.LocalDateTime;
 public class VerificationToken extends BaseEntity {
 
 
-    @OneToOne(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.PERSIST})
     private User user;
     private String token;
     private LocalDateTime expiryDate;

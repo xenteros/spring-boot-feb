@@ -1,5 +1,6 @@
 package com.github.xenteros.order;
 
+import com.github.xenteros.common.BaseEntity;
 import com.github.xenteros.product.Product;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends BaseEntity {
 
     @Id
     @GeneratedValue

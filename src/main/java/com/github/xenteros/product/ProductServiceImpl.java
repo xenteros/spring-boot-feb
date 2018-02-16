@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -37,6 +38,12 @@ public class ProductServiceImpl implements ProductService{
         Product product = productRepository.findOne(productId);
         product.setPrice(newPrice);
         return productMapper.toProductDTO(productRepository.save(product));
+    }
+
+    @Override
+    public Set<ProductNameAndPrice> findAllInterface() {
+
+        return productRepository.findAllByPriceGreaterThan(BigDecimal.ZERO);
     }
 
     @Override
