@@ -15,6 +15,7 @@ public class User extends BaseEntity implements UserDetails{
     @Column(unique = true, nullable = false)
     private String email;
     private String password;
+    private Boolean isEnabled = false;
 
     public String getEmail() {
         return email;
@@ -51,7 +52,11 @@ public class User extends BaseEntity implements UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isEnabled;
+    }
+
+    public void enable() {
+        this.isEnabled = true;
     }
 
     public void setEmail(String email) {
